@@ -1,0 +1,23 @@
+#!/bin/env sh
+# needs to have "video" as secondary or primary group to work without doing chown or modifying permissions manually
+
+brightness="$(cat /sys/class/backlight/intel_backlight/brightness)"
+
+if [ $1 -eq 0 ];then
+	if [ $brightness -le 2000 ];then
+		notify-send "min brightness already"
+		exit
+	fi
+	new_brightness="$(expr $brightness - 2000)"
+elif [ $1 -eq 1 ];then
+	if [ $brightness -ge 60000 ];then
+		echo 60000 > /sys/class/backlight/intel_backlight/brightness
+		notify-send "max brightness"
+		exit
+	fi
+	new_brightness="$(expr $brightness + 2000)"
+else
+	exit
+fi
+
+echo $new_brightness > /sys/class/backlight/intel_backlight/brightness

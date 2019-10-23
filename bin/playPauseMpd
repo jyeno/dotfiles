@@ -1,0 +1,11 @@
+#!/bin/env sh
+
+mpc status || mpd
+
+status="$(mpc status | sed '1d;$d' | awk '{print $1}')"
+if [ "$status" = "[playing]" ]; then
+	mpc pause > /dev/null
+else
+	mpc play > /dev/null
+fi
+

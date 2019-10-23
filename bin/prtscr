@@ -1,0 +1,18 @@
+#!/bin/env sh
+# I am not using this anymore, sway config has a substitute
+
+options=""
+
+prt_folder="${HOME}/images/shots/"
+
+print=${prt_folder}/$(date +'%d.%m.%Y_%H:%M:%S').png
+
+if [ $1 = "selection" ];then
+	options='${options} -g $(slurp -b 0x125432 -s 0xff9611)'
+fi
+
+echo $options
+grim $options $print
+
+notify-send "prtscr"
+#paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga

@@ -1,0 +1,12 @@
+#!/bin/env bash
+# currently is not placing alacritty in X and Y, trying to get it right
+
+# drawing a rectangle with slurp
+read -r X Y W H < <(slurp -f "%x %y %w %h")
+
+# Depends on font width & height
+(( W /= 12 ))
+(( H /= 21 ))
+
+alacritty --title "aladraw" --dimensions $W $H &
+swaymsg "for_window [app_id='Alacritty' title='aladraw'] move $X $Y" && notify-send "success"

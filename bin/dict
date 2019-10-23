@@ -1,0 +1,27 @@
+#!/bin/env sh
+
+word=""
+dict=""
+
+if [ "$1" = "list" ];then
+	curl --silent dict://dict.org/show:db | sed '/^[0-9].*/d' | awk '{print $1}' | less
+	exit 0
+elif [ $# -eq 1 ];then
+	word="$1"
+	dict="wn"
+elif [ $# -eq 2 ];then
+	word="$2"
+	dict="$1"
+else
+	delim="\n\t"
+	printf "usage:${delim}"
+	printf "dict <word>${delim}"
+	printf "dict <dicionary> <word>\n\n"
+	printf "E.G:${delim}"
+	printf "dict horse${delim}"
+	printf "dict fd-eng-por horse\n\n"
+	printf "dict list  -- to list all dicionaries available\n"
+	exit 1
+fi
+
+curl --silent dict://dict.org/d:${word}:${dict} | sed '/^[0-9].*/d'

@@ -1,0 +1,41 @@
+#!/bin/env sh
+
+if [ "$1" ]; then
+	ssid="$1"
+	pass="$2"
+else
+	echo "you need to pass at least one argument e.g:"
+	echo "conn_net <ssid>"
+	echo "conn_net <ssid> <password>"
+	echo "conn_net <ssid> <password> 1"
+	echo ""
+	echo "to execute this program you need administration powers(worry not, sudo gonna be called either way)"
+	echo ""
+	exit 1
+fi
+
+hidden=0
+if [ "$3" ];then
+	hidden=1
+fi
+
+if [ $(pgrep -f wpa) ];then
+	sudo kill -9 "$(pgrep -f wpa)"
+fi
+
+conn_folder="/root/.conn_net"
+conn_file="${conn_folder}/${ssid}"
+
+# if there is a password it does mean that either
+# you is changing the password of a existing file
+# or is creating a new one, either way gonna be passing here 
+if [ $pass ];then
+	sudo sh -c "wpa_passphrase $ssid $pass | sed "/#.*/s//scan_ssid=$hidden/" 1> $conn_file"
+fi
+
+sudo wpa_supplicant -B -i wlo1 -c $conn_file
+
+sleep 0.6s
+sudo dhcpcd wlo1
+
+sudo chmod 600 $conn_file

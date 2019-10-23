@@ -1,0 +1,103 @@
+#!/bin/env sh
+
+# setting some variables
+playpod_file="/tmp/playpod.hist"
+download_folder="~/music"
+menu_app="dmenu -i"
+pid_previous_playpod="$(pgrep -f mpv\ --loop\ --script | sed '1!d')"
+copyboard="wl-paste"
+
+# if xorg is running then uses xclip
+if [ $DISPLAY ];then
+	copyboard="xclip -o"
+fi
+
+select_from_history()
+{
+	# printing everything but the url
+	selected="$(printf "Clear History\n$(sed -r "s/^http[^ \t]+ //g" "$playpod_file")" | $menu_app -p 'play:')"
+
+	if [ ! "$selected" ];then
+		exit
+	fi
+
+	if [ "$selected" = "Clear History" ];then
+		printf "" > $playpod_file
+		exit 0
+	#elif [ "$selected" = "Play All" ];then
+	#	play_all_history # do a function after
+	fi
+
+	selected=$(grep "$selected" $playpod_file | awk '{print $1}')
+}
+
+kill_previous_pid()
+{
+	kill -9 $pid_previous_playpod
+}
+
+write_history()
+{
+	title="$(youtube-dl --get-title $url)"
+	if [ ! "$(grep "$title" $playpod_file)" ];then
+		echo "$url $title" >> $playpod_file
+	fi
+}
+
+play()
+{
+	# testing if gonna use history or copyboard
+	if [ "$selected" ];then
+		url="$selected"
+	else
+		url="$($copyboard)"
+		# saving history
+		write_history &
+	fi
+
+	# killing here
+	if [ $pid_previous_playpod ];then
+		kill_previous_pid
+	fi
+	
+	mpv --loop --script /usr/lib/mpv/mpris.so --no-video "$url" &> /dev/null
+}
+
+download_current()
+{
+	download="$(ps aux | grep 'mpv\ --loop\ --script\ /usr/lib/mpv/mpris.so\ --no-video' | sed '1!d' | awk '{print $NF}')"
+	title="$(youtube-dl --get-title $download)" &
+	youtube-dl --extract-audio --audio-format mp3 "$download" -o "$download_folder/%(title)s.%(etx)s" \
+		--add-metadata --embed-thumbnail \
+		--exec "notify-send downloaded $title"
+	if [ $? -ne 0 ];then
+		notify-send "download failed"
+	fi
+}
+
+menu()
+{
+	if [ "$pid_previous_playpod" ];then
+		status="$(playerctl --player=mpv metadata --format '{{lc(status)}}: {{duration(position)}}|{{duration(mpris:length)}}')"
+		notify-send "$(playerctl --player=mpv metadata title)" 
+
+		options="Resume|Pause\nPlay_Copyboard\nStop\nHistory\nDownload_Current\nNothing"
+	else
+		status="menu:"
+		# may fail but I think it is worth the risk(just youtube-dl can't get info from)
+		notify-send "$(youtube-dl --get-title $($copyboard))"&
+		
+		options="Play_Copyboard\nHistory\nNothing"
+	fi
+
+	case "$(printf $options | $menu_app -p "$status")" in
+		"Play_Copyboard")     play;; # gonna kill the previous mpv process
+		"Resume|Pause")       playerctl --player=mpv play-pause;;
+		"Stop")               kill_previous_pid;;
+		"Download_Current")   download_current;;
+		"History")            select_from_history && play;;
+		"Nothing")            ;; # nothing literally ;)
+	esac
+}
+
+menu
