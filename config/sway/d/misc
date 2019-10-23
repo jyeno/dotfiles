@@ -1,0 +1,21 @@
+# wallpaper
+output * bg ~/.wallpaper/codeCycle.jpg fill
+
+# opacity
+#opacity set 1
+
+# borders
+default_border pixel $borders
+default_floating_border pixel $borders
+smart_borders on
+
+# gaps
+gaps inner $gaps
+gaps outer 10
+smart_gaps on
+
+# notification server
+exec mako &
+
+# xwayland
+xwayland disable

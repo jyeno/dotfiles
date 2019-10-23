@@ -1,0 +1,16 @@
+set $config.d "$HOME/.config/sway/d/"
+
+# variables
+include $config.d/var
+# workspaces
+include $config.d/workspaces
+# misc
+include $config.d/misc
+# rules
+include $config.d/rules
+# binds
+include $config.d/binds
+# sway-idle
+include $config.d/idle
+# bar config
+include $config.d/swaybar

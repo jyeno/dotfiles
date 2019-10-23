@@ -1,0 +1,17 @@
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+
+	font Hack 9
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    status_command "${HOME}/bin/barway"
+
+    colors {
+        statusline #ffffff
+        background #222222
+        inactive_workspace #323232ff #323232ff #5c5c5cff
+    }
+}

@@ -1,0 +1,133 @@
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+	# draw a terminal?
+	bindsym Mod1+Return exec aladraw
+
+	# browser
+	bindsym Mod1+b exec firefox
+	
+	# telegram
+	bindsym Mod1+t exec telegram-desktop
+	
+    # Kill focused window
+    bindsym Mod1+k kill
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+#
+#  Audio Control
+#
+	# play/pause button
+	bindsym XF86AudioPlay exec \
+		~/bin/playPauseMpd
+
+	# next button
+	bindsym XF86AudioNext exec \
+		mpc next
+
+	# previous button
+	bindsym XF86AudioPrev exec \
+		mpc prev
+
+	# notification about what song is playing
+	bindsym $mod+m exec \
+		notify-send "Now Playing ♫" \"$(mpc current | sed 's/.mp3//')"
+
+	# raise audio volume
+	bindsym XF86AudioRaiseVolume exec \
+		amixer -q sset Master 5%+ && pkill -SIGTRAP barway
+
+	# lower audio volume
+	bindsym XF86AudioLowerVolume exec \
+		amixer -q sset Master 5%- && pkill -SIGTRAP barway
+
+	# mute audio volume
+	bindsym XF86AudioMute exec \
+		amixer -q sset Master toggle && pkill -SIGTRAP barway
+
+#
+#  Brightness Control
+# 
+	# brightness up
+	bindsym XF86MonBrightnessUp exec \
+		~/bin/brightCtrl 1
+
+	# brightness down
+	bindsym Xf86MonBrightnessDown exec \
+		~/bin/brightCtrl 0
+	
+#  
+#  screen utilities
+#
+	# printscreen and send to copyboard
+	bindsym --release Print exec \
+		grim - | wl-copy
+
+	# printscreen(part of) and send to copyboard
+	bindsym --release Mod1+Print exec \
+		grim -g \"$(slurp)" - | wl-copy
+
+	# record the screen
+	bindsym --release $mod+Print exec \
+		sh -c "wf-recorder -a -f ~/videos/$(date +'%d.%m.%Y_%H:%M').mp4"
+
+	# record the screen(part of)
+	bindsym --release $mod+Mod1+Print exec \
+		sh -c 'wf-recorder -g "$(slurp)" -f ~/videos/$(date +"%d.%m.%Y_%H:%M")_s.mp4'
+
+	# stop recording
+	bindsym --release $mod+Shift+Print exec \
+		pkill -SIGINT wf-recorder && notify-send "record ended"
+
+#
+# misc
+#
+	# Exit sway
+	bindsym $mod+q exec swaymsg "exit"
+
+    # Reload the configuration file
+    bindsym $mod+c reload
+
+	# script to play youtube audio
+	bindsym $mod+p exec \
+		~/bin/playpod
+
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+	
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    
+	# Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right

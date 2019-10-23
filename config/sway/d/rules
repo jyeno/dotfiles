@@ -1,0 +1,10 @@
+# firefox
+for_window [app_id="firefox"] mark _browser
+for_window [app_id="firefox"] move container to workspace 4
+
+# telegram
+for_window [app_id="telegram"] move container to workspace 3
+
+# drawing a terminal
+for_window [app_id="Alacritty" title="aladraw"] floating enable
+

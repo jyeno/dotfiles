@@ -1,0 +1,30 @@
+sw_volume: 100
+audio_device_state:1:alsa audio
+audio_device_state:0:ALSA sound card
+audio_device_state:1:my_fifo
+audio_device_state:0:pulse audio
+state: play
+current: 1
+time: 4.162000
+random: 0
+repeat: 1
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Ed Sheeran - Thinking Out Loud [Official Video].mp3
+1:Dragonforce - Through The Fire And Flames (SLOW ACOUSTIC COVER... IN THE WATER).mp3
+2:Coldplay - The Scientist.mp3
+3:Engenheiros do Hawaii - O Preço (Acústico MTV).mp3
+4:Engenheiros do Hawaii Eu Que Não Amo Você (acústico mtv).mp3
+5:Imagine Dragons - Machine (Audio).mp3
+6:SYSTEM OF A DOWN - Chop Suey! (WAY TOO HAPPY ACOUSTIC COVER).mp3
+7:Demons - Imagine Dragons (Boyce Avenue feat. Jennel Garcia acoustic cover) on Spotify & Apple.mp3
+8:Imagine Dragons  - Believer  [Acoustic Cover].mp3
+9:The Chainsmokers & Coldplay - Something Just Like This (Aspen Cover).mp3
+10:Drunken Sailer - Irish Rovers.mp3
+11:Irish Drinking Song- Rocky Road to Dublin.mp3
+12:Bruno Mars - The Lazy Song (Alternative Official Video).mp3
+playlist_end
