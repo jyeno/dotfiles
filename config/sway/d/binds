@@ -76,6 +76,10 @@
 	bindsym --release Print exec \
 		grim - | wl-copy
 
+	# toggle backlight
+	bindsym --release Insert exec \
+		~/.config/sway/toggle_backlight.sh
+	
 	# printscreen(part of) and send to copyboard
 	bindsym --release Mod1+Print exec \
 		grim -g \"$(slurp)" - | wl-copy

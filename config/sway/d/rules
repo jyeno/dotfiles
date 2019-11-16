@@ -1,10 +1,16 @@
 # firefox
-for_window [app_id="firefox"] mark _browser
-for_window [app_id="firefox"] move container to workspace 4
+#for_window [app_id="firefox"] mark _browser
+assign [app_id="firefox"] 4
 
 # telegram
-for_window [app_id="telegram"] move container to workspace 3
+assign [app_id="telegram"] 3
 
 # drawing a terminal
-for_window [app_id="Alacritty" title="aladraw"] floating enable
+for_window [app_id="Alacritty" title="aladraw"] floating enable, border none
 
+# mpv
+for_window [app_id="mpv"] floating enable, border none, sticky enable
+
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen
+for_window [app_id="^.*"] inhibit_idle fullscreen

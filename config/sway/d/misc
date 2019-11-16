@@ -1,5 +1,5 @@
 # wallpaper
-output * bg ~/.wallpaper/codeCycle.jpg fill
+output * bg $(shuf -n 1 -e ~/.wallpaper/*) fill
 
 # opacity
 #opacity set 1

@@ -14,4 +14,5 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty -e sh -c "tmux att jyeno || tmux new -t jyeno"
 
-set $menu bash -c "compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec"
+# menu
+set $menu alacritty -t menu -e --dimensions 30 40 sh -c "TERMINAL_COMMAND='alacritty -t menu' ~/.config/sway/sway-launcher-desktop.sh"
