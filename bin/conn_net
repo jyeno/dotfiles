@@ -24,18 +24,25 @@ if [ $(pgrep -f wpa) ];then
 fi
 
 conn_folder="/root/.conn_net"
+# checks if the folder already exists
+# if not create it
+if [ ! -d "$conn_folder" ];then
+	sudo mkdir "$conn_folder"
+fi
+
 conn_file="${conn_folder}/${ssid}"
 
 # if there is a password it does mean that either
 # you is changing the password of a existing file
 # or is creating a new one, either way gonna be passing here 
-if [ $pass ];then
+if [ "$pass" = "open"  ];then
+	sudo sh -c "wpa_passphrase $ssid nopassword | sed "/#.*/s//scan_ssid=$hidden/" | sed '4d' 1> $conn_file"
+elif [ "$pass" ];then
 	sudo sh -c "wpa_passphrase $ssid $pass | sed "/#.*/s//scan_ssid=$hidden/" 1> $conn_file"
 fi
 
-sudo wpa_supplicant -B -i wlo1 -c $conn_file
+
+sudo wpa_supplicant -B -i wlan0 -c $conn_file
 
 sleep 0.6s
-sudo dhcpcd wlo1
-
-sudo chmod 600 $conn_file
+sudo dhcpcd wlan0

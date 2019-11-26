@@ -15,4 +15,4 @@ set $right l
 set $term alacritty -e sh -c "tmux att jyeno || tmux new -t jyeno"
 
 # menu
-set $menu alacritty -t menu -e --dimensions 30 40 sh -c "TERMINAL_COMMAND='alacritty -t menu' ~/.config/sway/sway-launcher-desktop.sh"
+set $menu dmenu-wl_run
