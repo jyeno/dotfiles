@@ -1,0 +1,16 @@
+#!/bin/env sh
+
+# starts bluetooth
+# WIP involve the script to connect to the last device connected
+# currently it is hardcoded :sorry:
+
+if [ -z $(pgrep bluetoothd) ]; then
+    sudo systemctl start bluetooth.service
+fi
+
+bluetoothctl --timeout 0 power on
+bluetoothctl --timeout 0 connect 5C:C6:E9:17:6E:D5
+
+if [ -z $(pgrep barway) ]; then
+    pkill -SIGTRAP barway
+fi

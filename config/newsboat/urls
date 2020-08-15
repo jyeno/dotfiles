@@ -1,0 +1,46 @@
+"query:Podcast:tags # \"podcast\"" meta
+"query:Unread:tags # \"blog\" and unread = \"yes\"" meta
+"query:Groups:tags # \"group\"" meta
+"query:Rust:tags # \"rust\"" meta
+"query:CPP:tags # \"cpp\"" meta
+https://fasterthanli.me/index.xml "how computer works" rust blog
+https://begriffs.com/atom.xml blog
+https://foonathan.net/feed.xml blog
+https://deterministic.space/feed.xml blog
+https://mariusbancila.ro/blog/feed/ blog
+https://maxliani.wordpress.com/feed.xml blog
+https://blog.rust-lang.org/feed rust blog
+https://www.sheshbabu.com/atom rust blog
+https://blog.gabrielmajeri.ro/feed.xml blog
+https://boats.gitlab.io/blog/index.xml blog
+https://toscalix.com/feed blog
+https://h313.info/blog/feed.xml blog
+https://humanreadablemag.com/feed.xml blog
+https://readrust.net/all/feed.rss blog rust group
+https://www.wezm.net/v2/rss.xml rust
+https://lukesmith.xyz/rss.xml blog
+https://blog.kodewerx.org/feeds/posts/default blog rust
+https://planet.kde.org/global/atom.xml/ blog kde group
+https://blog.stephenmarz.com/feed blog
+https://osblog.stephenmarz.com/feed.rss OS
+http://cliffle.com/rss.xml rust blog
+https://tristanbrindle.com/feed.xml cpp blog
+https://herbsutter.com/feed cpp blog
+https://arne-mertz.de/feed cpp blog
+https://blog.feabhas.com/feed cpp blog
+https://akrzemi1.wordpress.com/feed/ cpp blog
+https://isocpp.org/blog/rss/category/articles-books cpp group blog
+https://isocpp.org/blog/rss/category/news cpp group blog
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSyG9ph5BJSmPRyzc_eGC4g youtube libertarian
+https://www.orbit.fm/bookbytes/feed.rss podcast
+http://feeds.feedburner.com/misesaudiobooks podcast libertarian
+http://feeds.soundcloud.com/users/soundcloud:users:239787249/sounds.rss podcast
+http://feeds.soundcloud.com/users/soundcloud:users:721404514/sounds.rss podcast rust
+http://feeds.feedburner.com/ProgrammingThrowdown podcast prog
+https://agilein3minut.es/archive/index.rss podcast agile
+https://completedeveloperpodcast.com/feed/podcast/ podcast prog
+http://feeds.feedburner.com/CppWeekly podcast cpp
+https://cppcast.libsyn.com/rss podcast cpp
+https://anchor.fm/s/8d823ec/podcast/rss podcast
+https://createfeed.fivefilters.org/extract.php?url=4anime.to&in_id_or_class=headerDIV_4&max=5&order=document anime
+https://getmonero.org/feed.xml cryptocurrency

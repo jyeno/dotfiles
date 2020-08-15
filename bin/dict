@@ -24,4 +24,4 @@ else
 	exit 1
 fi
 
-curl --silent dict://dict.org/d:${word}:${dict} | sed '/^[0-9].*/d'
+curl --silent dict://dict.org/d:${word}:${dict} | sed '/^[0-9].*/d' | sed '$d'

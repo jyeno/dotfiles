@@ -1,0 +1,13 @@
+#!/bin/env bash
+# currently is not placing alacritty in the actual X and Y, trying to get it right
+
+# drawing a rectangle with slop
+read -r X Y W H < <(slop -f "%x %y %w %h")
+
+# Depends on font width & height
+(( W /= 6 ))
+(( H /= 12 ))
+
+# for debug the size
+#echo $W $H $X $Y
+alacritty --title "aladraw" --dimensions $W $H --position $X $Y

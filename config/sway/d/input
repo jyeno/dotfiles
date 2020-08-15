@@ -16,4 +16,3 @@
 #   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
-

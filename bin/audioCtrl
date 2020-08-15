@@ -1,0 +1,12 @@
+#!/bin/env sh
+
+# increase 5% volume
+if [ $1 -eq 0 ]; then
+	amixer -q sset Master 5%+ > /dev/null && pkill -SIGTRAP dwmbar
+# decrease 5% volume
+elif [ $1 -eq 1 ]; then
+	amixer -q sset Master 5%- > /dev/null && pkill -SIGTRAP dwmbar
+# mute/unmute
+elif [ $1 -eq 2 ]; then
+	amixer -q sset Master toggle > /dev/null && pkill -SIGTRAP dwmbar
+fi

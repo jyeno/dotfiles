@@ -12,7 +12,13 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term alacritty -e sh -c "tmux att jyeno || tmux new -t jyeno"
+set $term alacritty -e sh -c "tmux att || tmux new -t jyeno"
 
 # menu
-set $menu dmenu-wl_run
+set $menu dmenu_run
+
+# swaynagmode
+set $nag exec swaynagmode
+
+# WIP brightness wob
+set $battery_wob /tmp/battery.wob

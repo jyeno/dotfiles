@@ -8,15 +8,15 @@
     # Start your launcher
     bindsym $mod+d exec $menu
 
-	# draw a terminal?
-	bindsym Mod1+Return exec aladraw
+    # draw a terminal
+    bindsym Mod1+Return exec aladraw
 
-	# browser
-	bindsym Mod1+b exec firefox
-	
-	# telegram
-	bindsym Mod1+t exec telegram-desktop
-	
+    # browser
+    bindsym Mod1+b exec firefox
+
+    # telegram
+    bindsym Mod1+t exec telegram-desktop
+
     # Kill focused window
     bindsym Mod1+k kill
 
@@ -26,89 +26,113 @@
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
-
 #
 #  Audio Control
 #
-	# play/pause button
-	bindsym XF86AudioPlay exec \
-		~/bin/playPauseMpd
+    # play/pause button
+    bindsym --locked XF86AudioPlay exec \
+        ~/bin/playPauseMpd
 
-	# next button
-	bindsym XF86AudioNext exec \
-		mpc next
+    # next button
+    bindsym --locked XF86AudioNext exec \
+        mpc next
 
-	# previous button
-	bindsym XF86AudioPrev exec \
-		mpc prev
+    # previous button
+    bindsym --locked XF86AudioPrev exec \
+        mpc prev
 
-	# notification about what song is playing
-	bindsym $mod+m exec \
-		notify-send "Now Playing ♫" \"$(mpc current | sed 's/.mp3//')"
+    # raise audio volume
+    bindsym --locked XF86AudioRaiseVolume exec \
+        amixer -q sset Master 5%+ && pkill -SIGTRAP barway
 
-	# raise audio volume
-	bindsym XF86AudioRaiseVolume exec \
-		amixer -q sset Master 5%+ && pkill -SIGTRAP barway
+    # lower audio volume
+    bindsym --locked XF86AudioLowerVolume exec \
+        amixer -q sset Master 5%- && pkill -SIGTRAP barway
 
-	# lower audio volume
-	bindsym XF86AudioLowerVolume exec \
-		amixer -q sset Master 5%- && pkill -SIGTRAP barway
+    # mute audio volume
+    bindsym --locked XF86AudioMute exec \
+        amixer -q sset Master toggle && pkill -SIGTRAP barway
 
-	# mute audio volume
-	bindsym XF86AudioMute exec \
-		amixer -q sset Master toggle && pkill -SIGTRAP barway
-
+    # notification about what song is playing
+    bindsym $mod+m exec \
+        notify-send "Now Playing ♫" \"$(mpc current | sed 's/.mp3//')"
 #
-#  Brightness Control
-# 
-	# brightness up
-	bindsym XF86MonBrightnessUp exec \
-		~/bin/brightCtrl 1
-
-	# brightness down
-	bindsym Xf86MonBrightnessDown exec \
-		~/bin/brightCtrl 0
-	
-#  
 #  screen utilities
 #
-	# printscreen and send to copyboard
-	bindsym --release Print exec \
-		grim - | wl-copy
+    # brightness up
+    bindsym XF86MonBrightnessUp exec \
+        ~/bin/brightCtrl 1
 
-	# toggle backlight
-	bindsym --release Insert exec \
-		~/.config/sway/toggle_backlight.sh
-	
-	# printscreen(part of) and send to copyboard
-	bindsym --release Mod1+Print exec \
-		grim -g \"$(slurp)" - | wl-copy
+    # brightness down
+    bindsym Xf86MonBrightnessDown exec \
+        ~/bin/brightCtrl 0
 
-	# record the screen
-	bindsym --release $mod+Print exec \
-		sh -c "wf-recorder -a -f ~/videos/$(date +'%d.%m.%Y_%H:%M').mp4"
+    # printscreen and send to copyboard
+    bindsym --release Print exec \
+        grimshot copy screen
 
-	# record the screen(part of)
-	bindsym --release $mod+Mod1+Print exec \
-		sh -c 'wf-recorder -g "$(slurp)" -f ~/videos/$(date +"%d.%m.%Y_%H:%M")_s.mp4'
+    # take a sreenshot of the focused window
+    bindsym --release Shift+Print exec \
+        grimshot copy win ~/focusedWindow.png
 
-	# stop recording
-	bindsym --release $mod+Shift+Print exec \
-		pkill -SIGINT wf-recorder && notify-send "record ended"
+    # printscreen(part of) and send to copyboard
+    bindsym --release Mod1+Print exec \
+        grimshot copy area
 
+    # record the screen
+    bindsym --release $mod+Print exec \
+        wf-recorder -a -f \"~/Videos/shot_$(date +'%d.%m.%Y_%H:%M').mp4"
+
+    # record the screen(part of)
+    bindsym --release $mod+Mod1+Print exec \
+        wf-recorder -g "$(slurp)" -f "~/Videos/shot_${date +"%d.%m.%Y_%H:%M"}.mp4"
+
+    # stop recording
+    bindsym --release $mod+Shift+Print exec \
+        pkill -SIGINT wf-recorder && notify-send "record ended"
+
+    # toggle backlight
+    bindsym Mod1+q exec \
+        ~/.config/sway/toggle_backlight.sh
 #
 # misc
 #
-	# Exit sway
-	bindsym $mod+q exec swaymsg "exit"
+    # Exit sway
+    bindsym $mod+q exec swaymsg "exit"
 
     # Reload the configuration file
     bindsym $mod+c reload
 
-	# script to play youtube audio
-	bindsym $mod+p exec \
-		~/bin/playpod
+    # script to play youtube audio
+    bindsym $mod+p exec \
+        ~/bin/playpod
 
+    # zealdocs
+    bindsym $mod+z exec zeal
+
+    # keepassxc
+    bindsym $mod+x exec keepassxc
+
+    # swaynagmode
+    mode "nag" {
+        bindsym {
+            Ctrl+d    mode "default"
+            Ctrl+c    $nag --exit
+            q         $nag --exit
+            Escape    $nag --exit
+
+            Return    $nag --confirm
+
+            Tab       $nag --select prev
+            Shift+Tab $nag --select next
+
+            Left      $nag --select next
+            Right     $nag --select prev
+
+            Up        $nag --select next
+            Down      $nag --select prev
+        }
+    }
 #
 # Moving around:
 #
@@ -117,7 +141,7 @@
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-	
+
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -130,7 +154,7 @@
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     
-	# Ditto, with arrow keys
+    # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up

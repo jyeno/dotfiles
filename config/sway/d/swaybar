@@ -4,7 +4,7 @@
 bar {
     position top
 
-	font NotoSans Nerd Font 10
+    font NotoSans Nerd Font 11
 
     # When the status_command prints a new line to stdout, swaybar updates.
     status_command "${HOME}/bin/barway"

@@ -1,0 +1,7 @@
+[user]
+	email = jeno.andrade@gmail.com
+	name = Jean Lima Andrade
+[core]
+	editor = nvim
+[push]
+	default = nothing

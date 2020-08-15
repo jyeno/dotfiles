@@ -1,6 +1,11 @@
 # firefox
-#for_window [app_id="firefox"] mark _browser
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky enable, border none
+
 assign [app_id="firefox"] 4
+
+assign [app_id="org.qt-project.qmlscene"] 2
+
+assign [app_id="org.keepassxc.KeePassXC"] 2
 
 # telegram
 assign [app_id="telegram"] 3
@@ -8,9 +13,17 @@ assign [app_id="telegram"] 3
 # drawing a terminal
 for_window [app_id="Alacritty" title="aladraw"] floating enable, border none
 
+# keepassxc
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+
 # mpv
-for_window [app_id="mpv"] floating enable, border none, sticky enable
+for_window [app_id="mpv"] floating enable, border none
 
 # Inhibit Idle if a window is fullscreen
 for_window [class="^.*"] inhibit_idle fullscreen
+
 for_window [app_id="^.*"] inhibit_idle fullscreen
+
+for_window [app_id="mark"] floating enable, border none
+
+for_window [app_id="org.qt-project.qmlscene"] floating enable, border none

@@ -1,0 +1,24 @@
+auto-reload yes
+player mpv
+
+notify-always no
+notify-program /usr/bin/notify-send
+notify-format "newsboat: new %n unread articles"
+
+macro s set browser "mpv --script=/usr/lib/mpv/mpris.so %u" ; open-in-browser ; set browser "lynx %u"
+macro a set browser "mpv --script=/usr/lib/mpv/mpris.so --no-video %u" ; open-in-browser ; set browser "lynx %u"
+macro b set browser "qutebrowser %u" ; open-in-browser ; set browser "lynx %u"
+macro y set browser "echo %u | wl-copy" ; open-in-browser ; set browser "lynx %u"
+
+bind-key j next
+bind-key k prev
+bind-key l open
+bind-key h quit
+bind-key G end
+bind-key g home
+bind-key J next-feed
+bind-key K prev-feed
+bind-key j down article
+bind-key k up article
+bind-key J next article
+bind-key K prev article

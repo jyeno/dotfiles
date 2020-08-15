@@ -3,7 +3,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-bindkey -v
+#bindkey -v
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -15,19 +15,20 @@ compinit
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mpv="mpv --gpu-context=wayland"
+alias mpv="mpv --loop --gpu-context=wayland"
 alias gall="git add --all"
 alias gcom="git commit"
 alias gs="git status"
 alias gck="git checkout"
 alias q="exit"
-alias m="make"
+alias m="make -j8"
 alias sm="sudo make install"
 alias icat="kitty +kitten icat"
 alias clima="curl http://pt.wttr.in"
 alias v="nvim"
-alias vim="nvim"
+#alias vim="nvim"
 alias mpdris="systemctl --user start mpd-mpris"
+alias sudo="sudo "
 
 c() {
 	if [ $# -eq 0 ];then
@@ -37,4 +38,9 @@ c() {
 	elif [ -d $1 ]; then
 		cd $1
 	fi
+}
+
+commit() {
+	git add -A
+	git commit -m "$1"
 }

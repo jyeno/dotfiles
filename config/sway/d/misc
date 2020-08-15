@@ -1,5 +1,5 @@
 # wallpaper
-output * bg $(shuf -n 1 -e ~/.wallpaper/*) fill
+output * bg ~/.wallpaper/pallete.jpg fill
 
 # opacity
 #opacity set 1
@@ -10,12 +10,15 @@ default_floating_border pixel $borders
 smart_borders on
 
 # gaps
-gaps inner $gaps
+gaps inner 5
 gaps outer 10
 smart_gaps on
 
 # notification server
 exec mako &
+
+# WIP wob files
+exec mkfifo $battery_wob && tail -f $battery_wob | wob
 
 # xwayland
 xwayland disable
