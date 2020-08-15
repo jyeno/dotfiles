@@ -12,7 +12,7 @@ background-color=#2F343F
 max-visible=4
 
 # arrange notifications at the specified layer
-layer=overlay
+layer=top
 
 # show notifications at the specified position on the screen
 anchor=top-right
@@ -21,7 +21,7 @@ anchor=top-right
 text-color=#FFFFFFFF
 
 # set height
-height=100
+height=150
 
 # set width
 width=300
