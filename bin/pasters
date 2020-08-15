@@ -35,10 +35,10 @@ fi
 # usage if there are errors or matched none of above
 printf "usage:\n"
 printf "\n"
-printf "... --urls\n"
-printf "... <file>\n"
-printf "... <id> <option>\n"
+printf "pasters --urls    show urls of the pasted files\n"
+printf "pasters <file>    upload file and get its link\n"
+printf "pasters <id> <option>\n"
 printf "\n"
 printf "options available:\n"
-printf "..... --get    get the contents of id\n"
-printf "..... --del    delete content of id\n";
+printf " --get    get the contents of id\n"
+printf " --del    delete content of id\n";
