@@ -8,14 +8,22 @@ if [ "$#" = 1 ];then
     if [ "$1" = "--new" ]; then
         file=/tmp/pasters.temp
         vim $file
-    fi
-
-    if [ "$1" = "--urls" ]; then
+    elif [ "$1" = "--purge" ]; then
+        printf "" > $IDfile
+        exit
+    elif [ "$1" = "--urls" ]; then
         cat $IDfile
         exit
-
     elif [ -e $file ];then
-        link_id="$(curl -s --data-binary @$file https://paste.rs)"
+        filename=$(basename "$file")
+        ext="${filename##*\.}"
+        if [ $filename = $ext ]; then
+            ext=""
+        else
+            ext=".${ext}"
+        fi
+
+        link_id="$(curl -s --data-binary @$file https://paste.rs)$ext"
         echo $link_id | tee -a $IDfile
         printf "" > /tmp/pasters.temp
         exit
@@ -36,6 +44,7 @@ fi
 printf "usage:\n"
 printf "\n"
 printf "pasters --urls    show urls of the pasted files\n"
+printf "pasters --purge   Delete all the urls saved\n"
 printf "pasters <file>    upload file and get its link\n"
 printf "pasters <id> <option>\n"
 printf "\n"
