@@ -3,15 +3,15 @@
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-
     font NotoSans Nerd Font 11
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    status_command "${HOME}/bin/barway"
-
+    status_command i3status-rs ~/.config/sway/status.toml
     colors {
-        statusline #ffffff
+        separator #666666
         background #222222
-        inactive_workspace #323232ff #323232ff #5c5c5cff
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
     }
 }

@@ -3,10 +3,10 @@
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 300 'playerctl --player=mpv pause;mpc pause;/home/build/hub/swaywm/swaylock/build/swaylock -f' \
+          timeout 300 'swaylock -e -f -u -c 000000' \
           timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-          before-sleep '/home/build/hub/swaywm/swaylock/build/swaylock -e' \
+          before-sleep 'swaylock -e -f -u -c 000000' \
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
                #resume 'swaymsg "output * dpms on"' \

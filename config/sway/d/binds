@@ -14,6 +14,9 @@
     # browser
     bindsym Mod1+b exec firefox
 
+    # qutebrowser
+    bindsym $mod+Mod1+b exec qutebrowser
+
     # telegram
     bindsym Mod1+t exec telegram-desktop
 
@@ -35,11 +38,11 @@
 
     # next button
     bindsym --locked XF86AudioNext exec \
-        mpc next
+        playerctl next
 
     # previous button
     bindsym --locked XF86AudioPrev exec \
-        mpc prev
+        playerctl previous
 
     # raise audio volume
     bindsym --locked XF86AudioRaiseVolume exec \
@@ -90,10 +93,6 @@
     # stop recording
     bindsym --release $mod+Shift+Print exec \
         pkill -SIGINT wf-recorder && notify-send "record ended"
-
-    # toggle backlight
-    bindsym Mod1+q exec \
-        ~/.config/sway/toggle_backlight.sh
 #
 # misc
 #

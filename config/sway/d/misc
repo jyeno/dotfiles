@@ -1,5 +1,5 @@
 # wallpaper
-output * bg ~/.wallpaper/pallete.jpg fill
+output * bg #2E3440 solid_color
 
 # opacity
 #opacity set 1
@@ -15,10 +15,7 @@ gaps outer 10
 smart_gaps on
 
 # notification server
-exec mako &
-
-# WIP wob files
-exec mkfifo $battery_wob && tail -f $battery_wob | wob
+exec mako
 
 # xwayland
 xwayland disable

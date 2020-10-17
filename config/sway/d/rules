@@ -11,7 +11,7 @@ assign [app_id="org.keepassxc.KeePassXC"] 2
 assign [app_id="telegram"] 3
 
 # drawing a terminal
-for_window [app_id="Alacritty" title="aladraw"] floating enable, border none
+for_window [app_id="Alacritty" title="aladraw"] floating enable, border 5px
 
 # keepassxc
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable

@@ -1,0 +1,45 @@
+theme = "modern"
+icons = "awesome"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+message = "Take a break!"
+break_message = "Back to work!"
+use_nag = true
+nag_path = "swaynag"
+
+[[block]]
+block = "taskwarrior"
+interval = 600
+format = "{count} open tasks"
+format_singular = "{count} open task"
+format_everything_done = "take it easy"
+warning_threshold = 10
+critical_threshold = 20
+
+[[block]]
+block = "net"
+device = "wlan0"
+interval = 60
+use_bits = false
+speed_up = false
+speed_down = false
+
+[[block]]
+block = "battery"
+format = "{percentage}%"
+info = 100
+good = 70
+warning = 40
+critical = 15
+interval = 60
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
