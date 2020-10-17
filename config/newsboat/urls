@@ -14,6 +14,7 @@ https://www.sheshbabu.com/atom rust blog
 https://blog.gabrielmajeri.ro/feed.xml blog
 https://boats.gitlab.io/blog/index.xml blog
 https://toscalix.com/feed blog
+https://drewdevault.com/blog/index.xml blog C
 https://h313.info/blog/feed.xml blog
 https://humanreadablemag.com/feed.xml blog
 https://readrust.net/all/feed.rss blog rust group
@@ -22,12 +23,14 @@ https://lukesmith.xyz/rss.xml blog
 https://blog.kodewerx.org/feeds/posts/default blog rust
 https://planet.kde.org/global/atom.xml/ blog kde group
 https://blog.stephenmarz.com/feed blog
+https://katcipis.github.io/index.xml blog web
 https://osblog.stephenmarz.com/feed.rss OS
 http://cliffle.com/rss.xml rust blog
 https://tristanbrindle.com/feed.xml cpp blog
 https://herbsutter.com/feed cpp blog
 https://arne-mertz.de/feed cpp blog
 https://blog.feabhas.com/feed cpp blog
+https://feeds.fireside.fm/cppchat/rss cpp podcast
 https://akrzemi1.wordpress.com/feed/ cpp blog
 https://isocpp.org/blog/rss/category/articles-books cpp group blog
 https://isocpp.org/blog/rss/category/news cpp group blog
@@ -42,5 +45,5 @@ https://completedeveloperpodcast.com/feed/podcast/ podcast prog
 http://feeds.feedburner.com/CppWeekly podcast cpp
 https://cppcast.libsyn.com/rss podcast cpp
 https://anchor.fm/s/8d823ec/podcast/rss podcast
-https://createfeed.fivefilters.org/extract.php?url=4anime.to&in_id_or_class=headerDIV_4&max=5&order=document anime
-https://getmonero.org/feed.xml cryptocurrency
+https://anchor.fm/s/34251ca8/podcast/rss podcast monero
+https://getmonero.org/feed.xml cryptocurrency monero
