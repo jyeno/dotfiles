@@ -1,7 +1,54 @@
 [user]
-	email = jeno.andrade@gmail.com
+	email = jyeno@paranoid.email
 	name = Jean Lima Andrade
+	signingkey = 9016AB79FFA202B5
 [core]
 	editor = nvim
-[push]
-	default = nothing
+[alias]
+	co = checkout
+	cip = commit -p -m
+	unstage = reset HEAD --
+	ci = commit
+	st = status -s
+	br = branch
+	fp = fetch -p
+	lfive = log -5 HEAD --decorate  --oneline --graph
+	l = log --pretty=format:\"%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]\" --decorate --date=relative --graph
+	ds = diff --staged
+	d = diff --word-diff
+	cl = clone
+	rb = rebase
+	pll = pull origin
+	psh = push origin
+[pull]
+	rebase = false
+[url "git@gitlab.com:"]
+    insteadOf = gitlab:
+[url "git@github.com:"]
+    insteadOf = github:
+[url "git@invent.kde.org:"]
+    insteadOf = kde:
+[url "git@gitlab.qmob.solutions:"]
+    insteadOf = qmob:
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = master
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
